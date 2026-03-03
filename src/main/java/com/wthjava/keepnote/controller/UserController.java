@@ -16,6 +16,7 @@ public class UserController {
     private UserService userService;
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody User user){
+
         boolean isAuthenticated=userService.authenticate(user.getUsername(), user.getPassword());
         return isAuthenticated?ResponseEntity.status(HttpStatus.OK).body("Authenticated"):ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Not Authenticated");
 
